@@ -22,6 +22,7 @@
 		89BB97D918334F2300533562 /* SFNetworkAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97D818334F2300533562 /* SFNetworkAppTests.m */; };
 		89BB97E41833589F00533562 /* SFJSONTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E31833589F00533562 /* SFJSONTableViewController.m */; };
 		89BB97E718335B3D00533562 /* SFWeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E618335B3D00533562 /* SFWeatherModel.m */; };
+		89BB97EA1834054900533562 /* SFPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E91834054900533562 /* SFPhotoModel.m */; };
 		A1C00D31D3E84B8885B7A1EC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 623587D839EC4352B2B9162A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,8 @@
 		89BB97E31833589F00533562 /* SFJSONTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFJSONTableViewController.m; path = ../SFJSONTableViewController.m; sourceTree = "<group>"; };
 		89BB97E518335B3D00533562 /* SFWeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFWeatherModel.h; path = ../SFWeatherModel.h; sourceTree = "<group>"; };
 		89BB97E618335B3D00533562 /* SFWeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFWeatherModel.m; path = ../SFWeatherModel.m; sourceTree = "<group>"; };
+		89BB97E81834054900533562 /* SFPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFPhotoModel.h; path = ../SFPhotoModel.h; sourceTree = "<group>"; };
+		89BB97E91834054900533562 /* SFPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFPhotoModel.m; path = ../SFPhotoModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 		89BB97B318334F2300533562 /* SFNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
+				89BB97E81834054900533562 /* SFPhotoModel.h */,
+				89BB97E91834054900533562 /* SFPhotoModel.m */,
 				89BB97E518335B3D00533562 /* SFWeatherModel.h */,
 				89BB97E618335B3D00533562 /* SFWeatherModel.m */,
 				89BB97E21833589F00533562 /* SFJSONTableViewController.h */,
@@ -298,6 +303,7 @@
 			files = (
 				89BB97E41833589F00533562 /* SFJSONTableViewController.m in Sources */,
 				89BB97E718335B3D00533562 /* SFWeatherModel.m in Sources */,
+				89BB97EA1834054900533562 /* SFPhotoModel.m in Sources */,
 				89BB97BA18334F2300533562 /* main.m in Sources */,
 				89BB97BE18334F2300533562 /* SFAppDelegate.m in Sources */,
 			);

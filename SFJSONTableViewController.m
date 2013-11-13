@@ -8,6 +8,10 @@
 
 #import "SFJSONTableViewController.h"
 
+#define api_key @"3bfca7acbc13885f9a02d1efdc32e592"
+#define user_id @"62543166@N02"
+#define core_flickr @"http://api.flickr.com/services/rest/?&method="
+
 @interface SFJSONTableViewController () <NSURLSessionDataDelegate>
 
 @end
@@ -29,32 +33,34 @@
     
     self.seattleWeather = [[SFWeatherModel alloc] init];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURL *jsonURL = [NSURL URLWithString:@"http://api.openweathermap.org/data/2.5/weather?q=Seattle,us"];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration
-                                                          delegate: self
-                                                     delegateQueue: nil];
-    
-    NSURLSessionDataTask *jsonData = [session dataTaskWithURL:jsonURL
-                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                            
-                                                //Parse JSON to Dictionary
-                                                NSDictionary *dictionary = [data objectFromJSONData];
-                                                
-                                                //Parse Dictionary to Weather Model Object
-                                                self.seattleWeather.cityName = [dictionary objectForKey:@"name"];
-                                                self.seattleWeather.weatherTemperature = [dictionary valueForKeyPath:@"main.temp"];
-                                                self.seattleWeather.weatherDescription = [[[dictionary objectForKey:@"weather"] lastObject] objectForKey:@"description"];
-                                                
-                                                //Test Weather Model Values for validity
-                                                NSLog(@"%@", self.seattleWeather.cityName);
-                                                NSLog(@"%@", self.seattleWeather.weatherTemperature);
-                                                NSLog(@"%@", self.seattleWeather.weatherDescription);
-    
-    }];
-                                                                
-                                                                
-    [jsonData resume];
+    [self weatherCollection:jsonURL];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration
+//                                                          delegate: self
+//                                                     delegateQueue: nil];
+//    
+//    NSURLSessionDataTask *jsonData = [session dataTaskWithURL:jsonURL
+//                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//                            
+//                                                //Parse JSON to Dictionary
+//                                                NSDictionary *dictionary = [data objectFromJSONData];
+//                                                
+//                                                //Parse Dictionary to Weather Model Object
+//                                                self.seattleWeather.cityName = [dictionary objectForKey:@"name"];
+//                                                self.seattleWeather.weatherTemperature = [dictionary valueForKeyPath:@"main.temp"];
+//                                                self.seattleWeather.weatherDescription = [[[dictionary objectForKey:@"weather"] lastObject] objectForKey:@"description"];
+//                                                
+//                                                //Test Weather Model Values for validity
+//                                                NSLog(@"%@", self.seattleWeather.cityName);
+//                                                NSLog(@"%@", self.seattleWeather.weatherTemperature);
+//                                                NSLog(@"%@", self.seattleWeather.weatherDescription);
+//                                                //NSLog(@"%@ %@", api_key, user_id);
+//    
+//    }];
+//                                                                
+//                                                                
+//    [jsonData resume];
 
 
     // Uncomment the following line to preserve selection between presentations.
@@ -166,5 +172,41 @@
 //{
 //    NSLog(@"Did resume...");
 //}
+
+-(void)weatherCollection:(NSURL *)weatherLocation
+{
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration
+                                                          delegate: self
+                                                     delegateQueue: nil];
+    
+    NSURLSessionDataTask *jsonData = [session dataTaskWithURL:weatherLocation
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                
+                                                //Parse JSON to Dictionary
+                                                NSDictionary *dictionary = [data objectFromJSONData];
+                                                
+                                                //Parse Dictionary to Weather Model Object
+                                                self.seattleWeather.cityName = [dictionary objectForKey:@"name"];
+                                                self.seattleWeather.weatherTemperature = [dictionary valueForKeyPath:@"main.temp"];
+                                                self.seattleWeather.weatherDescription = [[[dictionary objectForKey:@"weather"] lastObject] objectForKey:@"description"];
+                                                
+                                                //Test Weather Model Values for validity
+                                                NSLog(@"%@", self.seattleWeather.cityName);
+                                                NSLog(@"%@", self.seattleWeather.weatherTemperature);
+                                                NSLog(@"%@", self.seattleWeather.weatherDescription);
+                                                //NSLog(@"%@ %@", api_key, user_id);
+                                                
+                                            }];
+    
+    
+    [jsonData resume];
+
+}
+
+-(void)photoCollectino:(NSURL *)photoLocation
+{
+    
+}
 
 @end

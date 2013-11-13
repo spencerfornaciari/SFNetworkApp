@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <JSONKit.h>
 #import "SFWeatherModel.h"
+#import "SFPhotoModel.h"
 
 @interface SFJSONTableViewController : UITableViewController
 
 @property (nonatomic, strong) SFWeatherModel *seattleWeather;
+@property (nonatomic, strong) SFPhotoModel *userPhotos;
 @property (nonatomic, strong) NSString *name;
+
+-(void)weatherCollection:(NSURL *)weatherLocation;
+-(void)photoCollectino:(NSURL *)photoLocation;
 
 @end
