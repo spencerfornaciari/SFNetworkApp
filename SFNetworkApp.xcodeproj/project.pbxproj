@@ -14,13 +14,15 @@
 		89BB97BA18334F2300533562 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97B918334F2300533562 /* main.m */; };
 		89BB97BE18334F2300533562 /* SFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97BD18334F2300533562 /* SFAppDelegate.m */; };
 		89BB97C118334F2300533562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BB97BF18334F2300533562 /* Main.storyboard */; };
-		89BB97C418334F2300533562 /* SFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97C318334F2300533562 /* SFViewController.m */; };
 		89BB97C618334F2300533562 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89BB97C518334F2300533562 /* Images.xcassets */; };
 		89BB97CD18334F2300533562 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97CC18334F2300533562 /* XCTest.framework */; };
 		89BB97CE18334F2300533562 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97AD18334F2300533562 /* Foundation.framework */; };
 		89BB97CF18334F2300533562 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97B118334F2300533562 /* UIKit.framework */; };
 		89BB97D718334F2300533562 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89BB97D518334F2300533562 /* InfoPlist.strings */; };
 		89BB97D918334F2300533562 /* SFNetworkAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97D818334F2300533562 /* SFNetworkAppTests.m */; };
+		89BB97E41833589F00533562 /* SFJSONTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E31833589F00533562 /* SFJSONTableViewController.m */; };
+		89BB97E718335B3D00533562 /* SFWeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E618335B3D00533562 /* SFWeatherModel.m */; };
+		A1C00D31D3E84B8885B7A1EC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 623587D839EC4352B2B9162A /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6178AFBAF2034607A3B82574 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		623587D839EC4352B2B9162A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BB97AA18334F2300533562 /* SFNetworkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFNetworkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BB97AD18334F2300533562 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89BB97AF18334F2300533562 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,14 +49,16 @@
 		89BB97BC18334F2300533562 /* SFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFAppDelegate.h; sourceTree = "<group>"; };
 		89BB97BD18334F2300533562 /* SFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAppDelegate.m; sourceTree = "<group>"; };
 		89BB97C018334F2300533562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		89BB97C218334F2300533562 /* SFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFViewController.h; sourceTree = "<group>"; };
-		89BB97C318334F2300533562 /* SFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFViewController.m; sourceTree = "<group>"; };
 		89BB97C518334F2300533562 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		89BB97CB18334F2300533562 /* SFNetworkAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFNetworkAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BB97CC18334F2300533562 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		89BB97D418334F2300533562 /* SFNetworkAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SFNetworkAppTests-Info.plist"; sourceTree = "<group>"; };
 		89BB97D618334F2300533562 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89BB97D818334F2300533562 /* SFNetworkAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFNetworkAppTests.m; sourceTree = "<group>"; };
+		89BB97E21833589F00533562 /* SFJSONTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFJSONTableViewController.h; path = ../SFJSONTableViewController.h; sourceTree = "<group>"; };
+		89BB97E31833589F00533562 /* SFJSONTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFJSONTableViewController.m; path = ../SFJSONTableViewController.m; sourceTree = "<group>"; };
+		89BB97E518335B3D00533562 /* SFWeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFWeatherModel.h; path = ../SFWeatherModel.h; sourceTree = "<group>"; };
+		89BB97E618335B3D00533562 /* SFWeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFWeatherModel.m; path = ../SFWeatherModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 				89BB97B018334F2300533562 /* CoreGraphics.framework in Frameworks */,
 				89BB97B218334F2300533562 /* UIKit.framework in Frameworks */,
 				89BB97AE18334F2300533562 /* Foundation.framework in Frameworks */,
+				A1C00D31D3E84B8885B7A1EC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +93,7 @@
 				89BB97D218334F2300533562 /* SFNetworkAppTests */,
 				89BB97AC18334F2300533562 /* Frameworks */,
 				89BB97AB18334F2300533562 /* Products */,
+				6178AFBAF2034607A3B82574 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +113,7 @@
 				89BB97AF18334F2300533562 /* CoreGraphics.framework */,
 				89BB97B118334F2300533562 /* UIKit.framework */,
 				89BB97CC18334F2300533562 /* XCTest.framework */,
+				623587D839EC4352B2B9162A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,11 +121,13 @@
 		89BB97B318334F2300533562 /* SFNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
+				89BB97E518335B3D00533562 /* SFWeatherModel.h */,
+				89BB97E618335B3D00533562 /* SFWeatherModel.m */,
+				89BB97E21833589F00533562 /* SFJSONTableViewController.h */,
+				89BB97E31833589F00533562 /* SFJSONTableViewController.m */,
 				89BB97BC18334F2300533562 /* SFAppDelegate.h */,
 				89BB97BD18334F2300533562 /* SFAppDelegate.m */,
 				89BB97BF18334F2300533562 /* Main.storyboard */,
-				89BB97C218334F2300533562 /* SFViewController.h */,
-				89BB97C318334F2300533562 /* SFViewController.m */,
 				89BB97C518334F2300533562 /* Images.xcassets */,
 				89BB97B418334F2300533562 /* Supporting Files */,
 			);
@@ -159,9 +170,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 89BB97DC18334F2300533562 /* Build configuration list for PBXNativeTarget "SFNetworkApp" */;
 			buildPhases = (
+				76F9EAE3EC63432D9B852B12 /* Check Pods Manifest.lock */,
 				89BB97A618334F2300533562 /* Sources */,
 				89BB97A718334F2300533562 /* Frameworks */,
 				89BB97A818334F2300533562 /* Resources */,
+				9BCFA132E40144EA81B665BE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,13 +258,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		76F9EAE3EC63432D9B852B12 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9BCFA132E40144EA81B665BE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		89BB97A618334F2300533562 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89BB97E41833589F00533562 /* SFJSONTableViewController.m in Sources */,
+				89BB97E718335B3D00533562 /* SFWeatherModel.m in Sources */,
 				89BB97BA18334F2300533562 /* main.m in Sources */,
-				89BB97C418334F2300533562 /* SFViewController.m in Sources */,
 				89BB97BE18334F2300533562 /* SFAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +423,7 @@
 		};
 		89BB97DD18334F2300533562 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6178AFBAF2034607A3B82574 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -389,6 +437,7 @@
 		};
 		89BB97DE18334F2300533562 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6178AFBAF2034607A3B82574 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -461,6 +510,7 @@
 				89BB97DE18334F2300533562 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89BB97DF18334F2300533562 /* Build configuration list for PBXNativeTarget "SFNetworkAppTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +519,7 @@
 				89BB97E118334F2300533562 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
