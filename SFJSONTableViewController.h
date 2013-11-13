@@ -18,6 +18,6 @@
 @property (nonatomic, strong) NSString *name;
 
 -(void)weatherCollection:(NSURL *)weatherLocation;
--(void)photoCollectino:(NSURL *)photoLocation;
+-(void)photoCollection:(NSURL *)photoLocation;
 
 @end

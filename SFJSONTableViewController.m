@@ -32,10 +32,14 @@
     [super viewDidLoad];
     
     self.seattleWeather = [[SFWeatherModel alloc] init];
+    self.userPhotos = [[SFPhotoModel alloc] init];
     
 //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURL *jsonURL = [NSURL URLWithString:@"http://api.openweathermap.org/data/2.5/weather?q=Seattle,us"];
+    NSURL *photoURL = [NSURL URLWithString:@"http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&format=json&api_key=3bfca7acbc13885f9a02d1efdc32e592&user_id=62543166@N02&nojsoncallback=1"];
+
     [self weatherCollection:jsonURL];
+    [self photoCollection:photoURL];
 //    NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration
 //                                                          delegate: self
 //                                                     delegateQueue: nil];
@@ -87,7 +91,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 0;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -196,7 +200,7 @@
                                                 NSLog(@"%@", self.seattleWeather.weatherTemperature);
                                                 NSLog(@"%@", self.seattleWeather.weatherDescription);
                                                 //NSLog(@"%@ %@", api_key, user_id);
-                                                
+                                                [self.tableView reloadData];
                                             }];
     
     
@@ -204,9 +208,34 @@
 
 }
 
--(void)photoCollectino:(NSURL *)photoLocation
+-(void)photoCollection:(NSURL *)photoLocation
 {
-    
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration
+                                                              delegate: self
+                                                         delegateQueue: nil];
+        
+        NSURLSessionDataTask *jsonData = [session dataTaskWithURL:photoLocation
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    
+                                                    //Parse JSON to Dictionary
+                                                    NSDictionary *dictionary = [data objectFromJSONData];
+                                         
+                                                    NSArray *array = [dictionary valueForKeyPath:@"photos.photo"];
+                                                    NSLog(@"%@", array);
+                                                    
+                                                    //Parse Dictionary to Weather Model Object
+//                                                    self.userPhotos.photoID = [dictionary ]
+//                                                    self.userPhotos.photoOwner =
+//                                                    self.userPhotos.photoTitle =
+                                                    
+                                                    //Test Weather Model Values for validity
+              
+                                                    //[self.tableView reloadData];
+                                                }];
+        
+        
+        [jsonData resume];
 }
 
 @end
