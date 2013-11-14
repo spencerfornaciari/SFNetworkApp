@@ -83,9 +83,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    NSURL *url = [NSURL URLWithString:[self.photoArray[indexPath.row] photoLocation]];
+    NSData *data = [NSData dataWithContentsOfURL:url];
     
-    NSString *string = [NSString stringWithFormat:@"%i", indexPath.row];
+    UIImage *image = [UIImage imageWithData:data];
+    
     cell.textLabel.text = [self.photoArray[indexPath.row] photoTitle];
+    cell.imageView.image = image;
+
 
     
     return cell;
@@ -217,9 +222,11 @@
                                                         newItem.photoID = [array[i] objectForKey:@"id"];
                                                         newItem.photoSecretID = [array[i] objectForKey:@"secret"];
                                                         newItem.photoFarm = [array[i] objectForKey:@"farm"];
+                                                        newItem.photoServer = [array[i] objectForKey:@"server"];
                                                         newItem.photoTitle = [array[i] objectForKey:@"title"];
                                                         
-                                                        NSLog(@"%@", newItem.photoTitle);
+                                                        [newItem createPhotoLocation];
+                                                        NSLog(@"%@", newItem.photoLocation);
                                                         
                                                         [self.photoArray addObject:newItem];
                                                     }
