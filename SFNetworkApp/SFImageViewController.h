@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) SFPhotoModel *flickrImage;
 
+
 - (IBAction)cancelPhoto:(id)sender;
 
 @end

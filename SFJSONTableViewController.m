@@ -20,6 +20,7 @@
 {
     NSURL *_jsonURL, *_photoURL;
     NSArray *_array;
+    UIImage *_imageDefault;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -38,7 +39,8 @@
     self.seattleWeather = [[SFWeatherModel alloc] init];
     self.userPhotos = [[SFPhotoModel alloc] init];
     self.photoArray = [[NSMutableArray alloc] init];
-    //_array = [[NSMutableArray alloc] init];
+    _array = [[NSMutableArray alloc] init];
+    
     
 //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     _jsonURL = [NSURL URLWithString:@"http://api.openweathermap.org/data/2.5/weather?q=Seattle,us"];
@@ -46,7 +48,7 @@
     
     _photoURL = [NSURL URLWithString:@"http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&format=json&api_key=3bfca7acbc13885f9a02d1efdc32e592&user_id=62543166@N02&per_page=25&nojsoncallback=1"];
 
-    [self weatherCollection:_jsonURL];
+    //[self weatherCollection:_jsonURL];
     [self photoCollection:_photoURL];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -79,8 +81,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    //return self.photoArray.count;
-    return _array.count;
+    return self.photoArray.count;
+    //return _array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,15 +91,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-//    NSURL *url = [NSURL URLWithString:[self.photoArray[indexPath.row] photoLocation]];
-//    NSData *data = [NSData dataWithContentsOfURL:url];
+    NSURL *url = [NSURL URLWithString:[self.photoArray[indexPath.row] photoLocationSmall]];
+    NSData *data = [NSData dataWithContentsOfURL:url];
 //    
-//    UIImage *image = [UIImage imageWithData:data];
+    UIImage *image = [UIImage imageWithData:data];
     
-    cell.textLabel.text = [_array[indexPath.row] cityName];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [_array[indexPath.row] weatherTemperature]];
-    //cell.textLabel.text = [self.photoArray[indexPath.row] photoTitle];
-    //cell.imageView.image = image;
+    //cell.textLabel.text = [_array[indexPath.row] cityName];
+    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [_array[indexPath.row] weatherTemperature]];
+    cell.textLabel.text = [self.photoArray[indexPath.row] photoTitle];
+    cell.imageView.image = image;
 
 
     
@@ -164,6 +166,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         SFImageViewController *controller = segue.destinationViewController;
         controller.flickrImage = self.photoArray[indexPath.row];
+        //NSLog(@"%ld", [self.tableView indexPathForSelectedRow]);
 //
 //
 //        [self presentViewController:controller animated:YES completion:nil];
@@ -184,30 +187,39 @@
                                                           delegate: self
                                                      delegateQueue: nil];
     
+   
+    
     NSURLSessionDataTask *jsonData = [session dataTaskWithURL:weatherLocation
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                 
-                                                //Parse JSON to Dictionary
-                                                NSDictionary *dictionary = [data objectFromJSONData];
                                                 
-                                                //Parse Dictionary to Weather Model Object
-                                                self.seattleWeather.cityName = [dictionary objectForKey:@"name"];
-                                                self.seattleWeather.weatherTemperature = [dictionary valueForKeyPath:@"main.temp"];
-                                                self.seattleWeather.weatherDescription = [[[dictionary objectForKey:@"weather"] lastObject] objectForKey:@"description"];
+                                                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                                    //Parse JSON to Dictionary
+                                                    NSDictionary *dictionary = [data objectFromJSONData];
+                                                    
+                                                    //Parse Dictionary to Weather Model Object
+                                                    self.seattleWeather.cityName = [dictionary objectForKey:@"name"];
+                                                    self.seattleWeather.weatherTemperature = [dictionary valueForKeyPath:@"main.temp"];
+                                                    self.seattleWeather.weatherDescription = [[[dictionary objectForKey:@"weather"] lastObject] objectForKey:@"description"];
+                                                    
+                                                    //Test Weather Model Values for validity
+                                                    //                                                NSLog(@"%@", self.seattleWeather.cityName);
+                                                    //                                                NSLog(@"%@", self.seattleWeather.weatherTemperature);
+                                                    //                                                NSLog(@"%@", self.seattleWeather.weatherDescription);
+                                                    //NSLog(@"%@ %@", api_key, user_id);
+                                                    NSArray *array = [NSArray arrayWithObject:self.seattleWeather];
+                                                    
+                                                    _array = array;
+                                                    NSLog(@"%@",[_array[0] cityName]);
+                                                    NSLog(@"%@",[_array[0] weatherTemperature]);
+                                                    NSLog(@"%@", [_array[0] weatherDescription]);
+                                                    [self.tableView reloadData];                                                }];
                                                 
-                                                //Test Weather Model Values for validity
-//                                                NSLog(@"%@", self.seattleWeather.cityName);
-//                                                NSLog(@"%@", self.seattleWeather.weatherTemperature);
-//                                                NSLog(@"%@", self.seattleWeather.weatherDescription);
-                                                //NSLog(@"%@ %@", api_key, user_id);
-                                                NSArray *array = [NSArray arrayWithObject:self.seattleWeather];
-                                                
-                                                _array = array;
-                                                NSLog(@"%@",[_array[0] cityName]);
-                                                NSLog(@"%i", _array.count);
-                                                [self.tableView reloadData];
                                             }];
     
+    if (session) {
+        [jsonData cancel];
+    }
     
     [jsonData resume];
 
@@ -223,39 +235,33 @@
         NSURLSessionDataTask *jsonData = [session dataTaskWithURL:photoLocation
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     
-                                                    //Parse JSON to Dictionary
-                                                    NSDictionary *dictionary = [data objectFromJSONData];
-                                         
-                                                    NSArray *array = [dictionary valueForKeyPath:@"photos.photo"];
-                                                    //NSLog(@"%@", array);
-                                                    
-                                                    for (int i = 0; i < array.count; i++)
-                                                    {
-                                                        SFPhotoModel *newItem = [[SFPhotoModel alloc] init];
-                                                        newItem.photoOwner = [array[i] objectForKey:@"owner"];
-                                                        newItem.photoID = [array[i] objectForKey:@"id"];
-                                                        newItem.photoSecretID = [array[i] objectForKey:@"secret"];
-                                                        newItem.photoFarm = [array[i] objectForKey:@"farm"];
-                                                        newItem.photoServer = [array[i] objectForKey:@"server"];
-                                                        newItem.photoTitle = [array[i] objectForKey:@"title"];
+                                                   
+                                                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                                        //Parse JSON to Dictionary
+                                                        NSDictionary *dictionary = [data objectFromJSONData];
                                                         
-                                                        [newItem createPhotoLocation];
-                                                        //NSLog(@"%@", newItem.photoLocation);
+                                                        //Sort Dictionary into an array of SFPhotoModel Items
+                                                        NSArray *array = [dictionary valueForKeyPath:@"photos.photo"];
+                                                        for (int i = 0; i < array.count; i++)
+                                                        {
+                                                            SFPhotoModel *newItem = [[SFPhotoModel alloc] init];
+                                                            newItem.photoOwner = [array[i] objectForKey:@"owner"];
+                                                            newItem.photoID = [array[i] objectForKey:@"id"];
+                                                            newItem.photoSecretID = [array[i] objectForKey:@"secret"];
+                                                            newItem.photoFarm = [array[i] objectForKey:@"farm"];
+                                                            newItem.photoServer = [array[i] objectForKey:@"server"];
+                                                            newItem.photoTitle = [array[i] objectForKey:@"title"];
+                                                            
+                                                            [newItem createPhotoLocation];
+                                                            
+                                                            [self.photoArray addObject:newItem];
+                                                        }
                                                         
-                                                        [self.photoArray addObject:newItem];
-                                                    }
-                                                    
-                                                    //NSLog(@"%i", self.photoArray.count);
-                                                    
-                                                    //Parse Dictionary to Weather Model Object
-//                                                    self.uxserPhotos.photoID = [dictionary ]
-//                                                    self.userPhotos.photoOwner =
-//                                                    self.userPhotos.photoTitle =
-                                                    
-                                                    //Test Weather Model Values for validity
-              
-                                                    [self.tableView reloadData];
-                                                }];
+                                                        
+                                                        [self.tableView reloadData];
+
+                                                    }];
+                                        }];
         
         
         [jsonData resume];

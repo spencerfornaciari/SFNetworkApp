@@ -26,21 +26,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     if (self.flickrImage) {
-        self.navigationItem.title = self.flickrImage.photoTitle;
         
-        NSLog(@"%@", self.flickrImage.photoTitle);
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration
                                                               delegate: self
                                                          delegateQueue: nil];
-        NSURL *downloadURL = [NSURL URLWithString:self.flickrImage.photoLocation];
-        NSLog(@"%@", self.flickrImage.photoLocation);
+        NSURL *downloadURL = [NSURL URLWithString:self.flickrImage.photoLocationLarge];
+        NSLog(@"%@", self.flickrImage.photoLocationLarge);
         
-       NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL: downloadURL];
-        
-        
+        NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL: downloadURL];
         
         [downloadTask resume];
 
@@ -54,19 +51,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-didFinishDownloadingToURL:(NSURL *)location
+- (void)URLSession:(NSURLSession *)session
+      downloadTask:(NSURLSessionDownloadTask *)downloadTask
+    didFinishDownloadingToURL:(NSURL *)location
 {
     NSLog(@"URL Session did finish downloading URL: %@", location);
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         NSData *fileData = [NSData dataWithContentsOfURL: location];
+        NSLog(@"%@", fileData);
         UIImage *image = [UIImage imageWithData: fileData];
-        [self.flickrFullPhoto setImage: image];
-        [self.flickrFullPhoto setContentMode: UIViewContentModeScaleAspectFit];
-        self.flickrFullPhoto.image = image;
-        
-
+        NSLog(@"%@", image.description);
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame: self.view.frame];
+        [imageView setImage: image];
+        NSLog(@"%f", imageView.image.size.width);
+        [imageView setContentMode: UIViewContentModeScaleAspectFit];
+        [self.view addSubview:imageView];
+        self.view.backgroundColor = [UIColor blueColor];
     }];
 }
 
@@ -76,7 +77,9 @@ didFinishDownloadingToURL:(NSURL *)location
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
     CGFloat percentComplete = (CGFloat)totalBytesWritten/totalBytesExpectedToWrite;
-   NSLog(@"URL Session did write %lli of %lli (%f)", bytesWritten, totalBytesWritten, percentComplete * 100.f);
+    NSLog(@"URL Session did write %lli of %lli (%f)", bytesWritten, totalBytesWritten, percentComplete * 100.f);
+    
+    
 //    
 //    if (percentComplete >= .7) {
 //        [session invalidateAndCancel];
