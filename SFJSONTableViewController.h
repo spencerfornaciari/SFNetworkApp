@@ -10,6 +10,7 @@
 #import <JSONKit.h>
 #import "SFWeatherModel.h"
 #import "SFPhotoModel.h"
+#import "SFImageViewController.h"
 
 @interface SFJSONTableViewController : UITableViewController
 
@@ -21,5 +22,7 @@
 
 -(void)weatherCollection:(NSURL *)weatherLocation;
 -(void)photoCollection:(NSURL *)photoLocation;
+
+- (IBAction)refreshJSON:(id)sender;
 
 @end

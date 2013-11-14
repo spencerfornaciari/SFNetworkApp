@@ -12,7 +12,7 @@
 
 -(void)createPhotoLocation
 {
-    self.photoLocation = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_s.jpg", self.photoFarm, self.photoServer, self.photoID, self.photoSecretID];
+    self.photoLocation = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_b.jpg", self.photoFarm, self.photoServer, self.photoID, self.photoSecretID];
                           
 }
 

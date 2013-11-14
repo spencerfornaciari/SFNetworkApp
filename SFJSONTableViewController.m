@@ -17,6 +17,10 @@
 @end
 
 @implementation SFJSONTableViewController
+{
+    NSURL *_jsonURL, *_photoURL;
+    NSArray *_array;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,15 +38,16 @@
     self.seattleWeather = [[SFWeatherModel alloc] init];
     self.userPhotos = [[SFPhotoModel alloc] init];
     self.photoArray = [[NSMutableArray alloc] init];
+    //_array = [[NSMutableArray alloc] init];
     
 //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURL *jsonURL = [NSURL URLWithString:@"http://api.openweathermap.org/data/2.5/weather?q=Seattle,us"];
+    _jsonURL = [NSURL URLWithString:@"http://api.openweathermap.org/data/2.5/weather?q=Seattle,us"];
 /*    NSURL *photoURL = [NSURL URLWithString:@"http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&format=json&api_key=3bfca7acbc13885f9a02d1efdc32e592&user_id=62543166@N02&nojsoncallback=1"];*/
     
-    NSURL *photoURL = [NSURL URLWithString:@"http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&format=json&api_key=3bfca7acbc13885f9a02d1efdc32e592&user_id=62543166@N02&per_page=25&nojsoncallback=1"];
+    _photoURL = [NSURL URLWithString:@"http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&format=json&api_key=3bfca7acbc13885f9a02d1efdc32e592&user_id=62543166@N02&per_page=25&nojsoncallback=1"];
 
-    [self weatherCollection:jsonURL];
-    [self photoCollection:photoURL];
+    [self weatherCollection:_jsonURL];
+    [self photoCollection:_photoURL];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -74,7 +79,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.photoArray.count;
+    //return self.photoArray.count;
+    return _array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -83,13 +89,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSURL *url = [NSURL URLWithString:[self.photoArray[indexPath.row] photoLocation]];
-    NSData *data = [NSData dataWithContentsOfURL:url];
+//    NSURL *url = [NSURL URLWithString:[self.photoArray[indexPath.row] photoLocation]];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    
+//    UIImage *image = [UIImage imageWithData:data];
     
-    UIImage *image = [UIImage imageWithData:data];
-    
-    cell.textLabel.text = [self.photoArray[indexPath.row] photoTitle];
-    cell.imageView.image = image;
+    cell.textLabel.text = [_array[indexPath.row] cityName];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [_array[indexPath.row] weatherTemperature]];
+    //cell.textLabel.text = [self.photoArray[indexPath.row] photoTitle];
+    //cell.imageView.image = image;
 
 
     
@@ -134,39 +142,40 @@
 }
 */
 
-/*
+
+#pragma mark - Table view delegate methods
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    // do a segue based on the indexPath or do any setup later in prepareForSegue
+    [self performSegueWithIdentifier:@"fullPhoto" sender:self];
+}
+
 #pragma mark - Navigation
+
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([segue.identifier isEqualToString:@"fullPhoto"]){
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        SFImageViewController *controller = segue.destinationViewController;
+        controller.flickrImage = self.photoArray[indexPath.row];
+//
+//
+//        [self presentViewController:controller animated:YES completion:nil];
+        
+        // do some prep based on indexPath, if needed
+        
+    }
 }
 
- */
 
-//-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-//didFinishDownloadingToURL:(NSURL *)location
-//{
-//    NSLog(@"URL Session did finish downloading URL: %@", location);
-//
-//}
 
-//- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-//      didWriteData:(int64_t)bytesWritten
-// totalBytesWritten:(int64_t)totalBytesWritten
-//totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
-//{
-//
-//}
 
-//- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-// didResumeAtOffset:(int64_t)fileOffset
-//expectedTotalBytes:(int64_t)expectedTotalBytes
-//{
-//    NSLog(@"Did resume...");
-//}
 
 -(void)weatherCollection:(NSURL *)weatherLocation
 {
@@ -187,10 +196,15 @@
                                                 self.seattleWeather.weatherDescription = [[[dictionary objectForKey:@"weather"] lastObject] objectForKey:@"description"];
                                                 
                                                 //Test Weather Model Values for validity
-                                                NSLog(@"%@", self.seattleWeather.cityName);
-                                                NSLog(@"%@", self.seattleWeather.weatherTemperature);
-                                                NSLog(@"%@", self.seattleWeather.weatherDescription);
+//                                                NSLog(@"%@", self.seattleWeather.cityName);
+//                                                NSLog(@"%@", self.seattleWeather.weatherTemperature);
+//                                                NSLog(@"%@", self.seattleWeather.weatherDescription);
                                                 //NSLog(@"%@ %@", api_key, user_id);
+                                                NSArray *array = [NSArray arrayWithObject:self.seattleWeather];
+                                                
+                                                _array = array;
+                                                NSLog(@"%@",[_array[0] cityName]);
+                                                NSLog(@"%i", _array.count);
                                                 [self.tableView reloadData];
                                             }];
     
@@ -226,12 +240,12 @@
                                                         newItem.photoTitle = [array[i] objectForKey:@"title"];
                                                         
                                                         [newItem createPhotoLocation];
-                                                        NSLog(@"%@", newItem.photoLocation);
+                                                        //NSLog(@"%@", newItem.photoLocation);
                                                         
                                                         [self.photoArray addObject:newItem];
                                                     }
                                                     
-                                                    NSLog(@"%i", self.photoArray.count);
+                                                    //NSLog(@"%i", self.photoArray.count);
                                                     
                                                     //Parse Dictionary to Weather Model Object
 //                                                    self.uxserPhotos.photoID = [dictionary ]
@@ -245,6 +259,10 @@
         
         
         [jsonData resume];
+}
+
+- (IBAction)refreshJSON:(id)sender {
+    [self weatherCollection:_jsonURL];
 }
 
 @end

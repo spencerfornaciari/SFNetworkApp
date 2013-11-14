@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		895CC50018348E7200D388D4 /* SFImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895CC4FF18348E7200D388D4 /* SFImageViewController.m */; };
 		89BB97AE18334F2300533562 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97AD18334F2300533562 /* Foundation.framework */; };
 		89BB97B018334F2300533562 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97AF18334F2300533562 /* CoreGraphics.framework */; };
 		89BB97B218334F2300533562 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97B118334F2300533562 /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 /* Begin PBXFileReference section */
 		6178AFBAF2034607A3B82574 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		623587D839EC4352B2B9162A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		895CC4FE18348E7200D388D4 /* SFImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageViewController.h; sourceTree = "<group>"; };
+		895CC4FF18348E7200D388D4 /* SFImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImageViewController.m; sourceTree = "<group>"; };
 		89BB97AA18334F2300533562 /* SFNetworkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFNetworkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BB97AD18334F2300533562 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89BB97AF18334F2300533562 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -135,6 +138,8 @@
 				89BB97BF18334F2300533562 /* Main.storyboard */,
 				89BB97C518334F2300533562 /* Images.xcassets */,
 				89BB97B418334F2300533562 /* Supporting Files */,
+				895CC4FE18348E7200D388D4 /* SFImageViewController.h */,
+				895CC4FF18348E7200D388D4 /* SFImageViewController.m */,
 			);
 			path = SFNetworkApp;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89BB97E41833589F00533562 /* SFJSONTableViewController.m in Sources */,
+				895CC50018348E7200D388D4 /* SFImageViewController.m in Sources */,
 				89BB97E718335B3D00533562 /* SFWeatherModel.m in Sources */,
 				89BB97EA1834054900533562 /* SFPhotoModel.m in Sources */,
 				89BB97BA18334F2300533562 /* main.m in Sources */,
