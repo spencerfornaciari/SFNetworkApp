@@ -17,6 +17,8 @@
 @property (nonatomic, strong) SFPhotoModel *userPhotos;
 @property (nonatomic, strong) NSString *name;
 
+@property (nonatomic, strong) NSMutableArray *photoArray;
+
 -(void)weatherCollection:(NSURL *)weatherLocation;
 -(void)photoCollection:(NSURL *)photoLocation;
 

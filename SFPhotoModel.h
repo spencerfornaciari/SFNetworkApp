@@ -12,7 +12,8 @@
 
 @property (nonatomic, strong) NSString *photoOwner;
 @property (nonatomic, strong) NSString *photoID;
+@property (nonatomic, strong) NSString *photoFarm;
 @property (nonatomic, strong) NSString *photoTitle;
-
+@property (nonatomic, strong) NSString *photoSecretID;
 
 @end
