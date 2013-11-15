@@ -147,10 +147,9 @@
     }
 }
 
-
 #pragma mark - Photo JSON Methods
 
-//
+//Photo JSON get method
 -(void)photoCollection:(NSURL *)photoLocation
 {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
