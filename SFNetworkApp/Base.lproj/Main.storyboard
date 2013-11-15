@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - Weather-->
+        <!--Table View Controller - Flickr Fun-->
         <scene sceneID="02x-kq-Qhw">
             <objects>
                 <tableViewController id="hb4-9B-VpW" customClass="SFJSONTableViewController" sceneMemberID="viewController">
@@ -44,7 +44,7 @@
                             <outlet property="delegate" destination="hb4-9B-VpW" id="Ts3-kb-2G3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Weather" id="6wG-7E-tct">
+                    <navigationItem key="navigationItem" title="Flickr Fun" id="6wG-7E-tct">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="eQc-iI-Gzc">
                             <connections>
                                 <action selector="refreshJSON:" destination="hb4-9B-VpW" id="R9S-n4-GJl"/>
@@ -71,11 +71,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agS-Le-8g9">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRV-gR-Tzn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -89,6 +84,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agS-Le-8g9">
+                                <rect key="frame" x="0.0" y="43" width="320" height="482"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gt4-cB-sYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173" y="-126"/>
+            <point key="canvasLocation" x="1182" y="-126"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IZU-Qw-0nz">

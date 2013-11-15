@@ -227,44 +227,44 @@
 
 -(void)photoCollection:(NSURL *)photoLocation
 {
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration
-                                                              delegate: self
-                                                         delegateQueue: nil];
-        
-        NSURLSessionDataTask *jsonData = [session dataTaskWithURL:photoLocation
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    
-                                                   
-                                                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                                                        //Parse JSON to Dictionary
-                                                        NSDictionary *dictionary = [data objectFromJSONData];
-                                                        
-                                                        //Sort Dictionary into an array of SFPhotoModel Items
-                                                        NSArray *array = [dictionary valueForKeyPath:@"photos.photo"];
-                                                        for (int i = 0; i < array.count; i++)
-                                                        {
-                                                            SFPhotoModel *newItem = [[SFPhotoModel alloc] init];
-                                                            newItem.photoOwner = [array[i] objectForKey:@"owner"];
-                                                            newItem.photoID = [array[i] objectForKey:@"id"];
-                                                            newItem.photoSecretID = [array[i] objectForKey:@"secret"];
-                                                            newItem.photoFarm = [array[i] objectForKey:@"farm"];
-                                                            newItem.photoServer = [array[i] objectForKey:@"server"];
-                                                            newItem.photoTitle = [array[i] objectForKey:@"title"];
-                                                            
-                                                            [newItem createPhotoLocation];
-                                                            
-                                                            [self.photoArray addObject:newItem];
-                                                        }
-                                                        
-                                                        
-                                                        [self.tableView reloadData];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration
+                                                          delegate: self
+                                                     delegateQueue: nil];
 
-                                                    }];
-                                        }];
-        
-        
-        [jsonData resume];
+    __block NSMutableArray *blockPhotoArray = [NSMutableArray new];
+    
+    NSURLSessionDataTask *jsonData = [session dataTaskWithURL:photoLocation
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                
+                                                //Parse JSON to Dictionary
+                                                NSDictionary *dictionary = [data objectFromJSONData];
+                                                
+                                                //Sort Dictionary into an array of SFPhotoModel Items
+                                                NSArray *array = [dictionary valueForKeyPath:@"photos.photo"];
+                                                for (int i = 0; i < array.count; i++)
+                                                {
+                                                    SFPhotoModel *newItem = [[SFPhotoModel alloc] init];
+                                                    newItem.photoOwner = [array[i] objectForKey:@"owner"];
+                                                    newItem.photoID = [array[i] objectForKey:@"id"];
+                                                    newItem.photoSecretID = [array[i] objectForKey:@"secret"];
+                                                    newItem.photoFarm = [array[i] objectForKey:@"farm"];
+                                                    newItem.photoServer = [array[i] objectForKey:@"server"];
+                                                    newItem.photoTitle = [array[i] objectForKey:@"title"];
+                                                    
+                                                    [newItem createPhotoLocation];
+                                                    
+                                                    [blockPhotoArray addObject:newItem];
+                                                }
+
+                                                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                                    self.photoArray = [NSMutableArray arrayWithArray:blockPhotoArray];
+                                                    [self.tableView reloadData];
+                                                }];
+                                    }];
+    
+    
+    [jsonData resume];
 }
 
 - (IBAction)refreshJSON:(id)sender {

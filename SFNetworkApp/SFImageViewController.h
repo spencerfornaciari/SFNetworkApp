@@ -14,7 +14,7 @@
 @interface SFImageViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *flickrFullPhoto;
 
-@property (weak, nonatomic) SFPhotoModel *flickrImage;
+@property (strong, nonatomic) SFPhotoModel *flickrImage;
 
 
 - (IBAction)cancelPhoto:(id)sender;

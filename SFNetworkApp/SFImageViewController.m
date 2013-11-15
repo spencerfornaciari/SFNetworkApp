@@ -27,7 +27,10 @@
 {
     [super viewDidLoad];
     
+    UINavigationItem* item = [[UINavigationItem alloc] initWithTitle:@"title text"];
+    
     if (self.flickrImage) {
+        
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
@@ -35,7 +38,13 @@
                                                               delegate: self
                                                          delegateQueue: nil];
         NSURL *downloadURL = [NSURL URLWithString:self.flickrImage.photoLocationLarge];
-        NSLog(@"%@", self.flickrImage.photoLocationLarge);
+//        NSData *data = [[NSData alloc] initWithContentsOfURL:downloadURL];
+//        UIImage *image = [UIImage imageWithData:data];
+//        self.flickrFullPhoto.image = image;
+//        [self.flickrFullPhoto setContentMode: UIViewContentModeScaleAspectFit];
+
+        //@"http://thewallpaperhd.com/wp-content/uploads/2013/05/Siamese-Cat-And-German-Shepherd-Friendship.jpg"
+        NSLog(@"download url is %@", downloadURL);
         
         NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL: downloadURL];
         
@@ -55,19 +64,18 @@
       downloadTask:(NSURLSessionDownloadTask *)downloadTask
     didFinishDownloadingToURL:(NSURL *)location
 {
-    NSLog(@"URL Session did finish downloading URL: %@", location);
+    NSData *fileData = [[NSData alloc ] initWithContentsOfURL:location];
+    UIImage *image = [UIImage imageWithData: fileData];
+    
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        NSData *fileData = [NSData dataWithContentsOfURL: location];
-        NSLog(@"%@", fileData);
-        UIImage *image = [UIImage imageWithData: fileData];
-        NSLog(@"%@", image.description);
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame: self.view.frame];
-        [imageView setImage: image];
-        NSLog(@"%f", imageView.image.size.width);
-        [imageView setContentMode: UIViewContentModeScaleAspectFit];
-        [self.view addSubview:imageView];
-        self.view.backgroundColor = [UIColor blueColor];
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
+//        [imageView setImage: image];
+//        [imageView setContentMode: UIViewContentModeScaleAspectFit];
+//        [self.view addSubview:imageView];
+        self.flickrFullPhoto.image = image;
+        [self.flickrFullPhoto setContentMode:UIViewContentModeScaleAspectFit];
+        //self.view.backgroundColor = [UIColor blueColor];
     }];
 }
 
