@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		895CC50018348E7200D388D4 /* SFImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895CC4FF18348E7200D388D4 /* SFImageViewController.m */; };
+		89B607371835CA1C00FB9DF9 /* SFChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B607361835CA1C00FB9DF9 /* SFChooseViewController.m */; };
+		89B6073A1835DCF400FB9DF9 /* SFWeatherTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B607391835DCF400FB9DF9 /* SFWeatherTableViewController.m */; };
 		89BB97AE18334F2300533562 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97AD18334F2300533562 /* Foundation.framework */; };
 		89BB97B018334F2300533562 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97AF18334F2300533562 /* CoreGraphics.framework */; };
 		89BB97B218334F2300533562 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97B118334F2300533562 /* UIKit.framework */; };
@@ -21,7 +23,7 @@
 		89BB97CF18334F2300533562 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB97B118334F2300533562 /* UIKit.framework */; };
 		89BB97D718334F2300533562 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89BB97D518334F2300533562 /* InfoPlist.strings */; };
 		89BB97D918334F2300533562 /* SFNetworkAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97D818334F2300533562 /* SFNetworkAppTests.m */; };
-		89BB97E41833589F00533562 /* SFJSONTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E31833589F00533562 /* SFJSONTableViewController.m */; };
+		89BB97E41833589F00533562 /* SFPhotoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E31833589F00533562 /* SFPhotoTableViewController.m */; };
 		89BB97E718335B3D00533562 /* SFWeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E618335B3D00533562 /* SFWeatherModel.m */; };
 		89BB97EA1834054900533562 /* SFPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E91834054900533562 /* SFPhotoModel.m */; };
 		A1C00D31D3E84B8885B7A1EC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 623587D839EC4352B2B9162A /* libPods.a */; };
@@ -42,6 +44,10 @@
 		623587D839EC4352B2B9162A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		895CC4FE18348E7200D388D4 /* SFImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageViewController.h; sourceTree = "<group>"; };
 		895CC4FF18348E7200D388D4 /* SFImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImageViewController.m; sourceTree = "<group>"; };
+		89B607351835CA1C00FB9DF9 /* SFChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFChooseViewController.h; path = ../SFChooseViewController.h; sourceTree = "<group>"; };
+		89B607361835CA1C00FB9DF9 /* SFChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFChooseViewController.m; path = ../SFChooseViewController.m; sourceTree = "<group>"; };
+		89B607381835DCF400FB9DF9 /* SFWeatherTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWeatherTableViewController.h; sourceTree = "<group>"; };
+		89B607391835DCF400FB9DF9 /* SFWeatherTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWeatherTableViewController.m; sourceTree = "<group>"; };
 		89BB97AA18334F2300533562 /* SFNetworkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFNetworkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BB97AD18334F2300533562 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89BB97AF18334F2300533562 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -59,8 +65,8 @@
 		89BB97D418334F2300533562 /* SFNetworkAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SFNetworkAppTests-Info.plist"; sourceTree = "<group>"; };
 		89BB97D618334F2300533562 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89BB97D818334F2300533562 /* SFNetworkAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFNetworkAppTests.m; sourceTree = "<group>"; };
-		89BB97E21833589F00533562 /* SFJSONTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFJSONTableViewController.h; path = ../SFJSONTableViewController.h; sourceTree = "<group>"; };
-		89BB97E31833589F00533562 /* SFJSONTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFJSONTableViewController.m; path = ../SFJSONTableViewController.m; sourceTree = "<group>"; };
+		89BB97E21833589F00533562 /* SFPhotoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFPhotoTableViewController.h; path = ../SFPhotoTableViewController.h; sourceTree = "<group>"; };
+		89BB97E31833589F00533562 /* SFPhotoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFPhotoTableViewController.m; path = ../SFPhotoTableViewController.m; sourceTree = "<group>"; };
 		89BB97E518335B3D00533562 /* SFWeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFWeatherModel.h; path = ../SFWeatherModel.h; sourceTree = "<group>"; };
 		89BB97E618335B3D00533562 /* SFWeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFWeatherModel.m; path = ../SFWeatherModel.m; sourceTree = "<group>"; };
 		89BB97E81834054900533562 /* SFPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFPhotoModel.h; path = ../SFPhotoModel.h; sourceTree = "<group>"; };
@@ -127,15 +133,19 @@
 		89BB97B318334F2300533562 /* SFNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
+				89B607351835CA1C00FB9DF9 /* SFChooseViewController.h */,
+				89B607361835CA1C00FB9DF9 /* SFChooseViewController.m */,
 				89BB97E81834054900533562 /* SFPhotoModel.h */,
 				89BB97E91834054900533562 /* SFPhotoModel.m */,
 				89BB97E518335B3D00533562 /* SFWeatherModel.h */,
 				89BB97E618335B3D00533562 /* SFWeatherModel.m */,
-				89BB97E21833589F00533562 /* SFJSONTableViewController.h */,
-				89BB97E31833589F00533562 /* SFJSONTableViewController.m */,
+				89BB97E21833589F00533562 /* SFPhotoTableViewController.h */,
+				89BB97E31833589F00533562 /* SFPhotoTableViewController.m */,
 				89BB97BC18334F2300533562 /* SFAppDelegate.h */,
 				89BB97BD18334F2300533562 /* SFAppDelegate.m */,
 				89BB97BF18334F2300533562 /* Main.storyboard */,
+				89B607381835DCF400FB9DF9 /* SFWeatherTableViewController.h */,
+				89B607391835DCF400FB9DF9 /* SFWeatherTableViewController.m */,
 				89BB97C518334F2300533562 /* Images.xcassets */,
 				89BB97B418334F2300533562 /* Supporting Files */,
 				895CC4FE18348E7200D388D4 /* SFImageViewController.h */,
@@ -306,7 +316,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89BB97E41833589F00533562 /* SFJSONTableViewController.m in Sources */,
+				89BB97E41833589F00533562 /* SFPhotoTableViewController.m in Sources */,
+				89B6073A1835DCF400FB9DF9 /* SFWeatherTableViewController.m in Sources */,
+				89B607371835CA1C00FB9DF9 /* SFChooseViewController.m in Sources */,
 				895CC50018348E7200D388D4 /* SFImageViewController.m in Sources */,
 				89BB97E718335B3D00533562 /* SFWeatherModel.m in Sources */,
 				89BB97EA1834054900533562 /* SFPhotoModel.m in Sources */,

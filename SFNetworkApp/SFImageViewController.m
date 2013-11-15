@@ -27,24 +27,16 @@
 {
     [super viewDidLoad];
     
-    UINavigationItem* item = [[UINavigationItem alloc] initWithTitle:@"title text"];
     
     if (self.flickrImage) {
-        
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration
                                                               delegate: self
                                                          delegateQueue: nil];
+        
         NSURL *downloadURL = [NSURL URLWithString:self.flickrImage.photoLocationLarge];
-//        NSData *data = [[NSData alloc] initWithContentsOfURL:downloadURL];
-//        UIImage *image = [UIImage imageWithData:data];
-//        self.flickrFullPhoto.image = image;
-//        [self.flickrFullPhoto setContentMode: UIViewContentModeScaleAspectFit];
-
-        //@"http://thewallpaperhd.com/wp-content/uploads/2013/05/Siamese-Cat-And-German-Shepherd-Friendship.jpg"
-        NSLog(@"download url is %@", downloadURL);
         
         NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL: downloadURL];
         
