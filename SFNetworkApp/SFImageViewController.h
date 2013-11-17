@@ -12,7 +12,6 @@
 
 
 @interface SFImageViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *flickrFullPhoto;
 
 @property (strong, nonatomic) SFPhotoModel *flickrImage;
 

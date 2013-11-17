@@ -117,9 +117,7 @@
 
 #pragma mark - Table view delegate methods
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    // do a segue based on the indexPath or do any setup later in prepareForSegue
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"fullPhoto" sender:self];
 }
 
@@ -207,6 +205,11 @@
 - (IBAction)refreshJSON:(id)sender
 {
     [self refreshPhotoTable];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+   // NSLog(@"The table is scrolling: %@", scrollView.);
+    
 }
 
 @end

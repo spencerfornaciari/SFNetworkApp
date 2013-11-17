@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <JSONKit.h>
 #import "SFWeatherModel.h"
+#import "SFWeatherViewCell.h"
 
 @interface SFWeatherTableViewController : UITableViewController
 

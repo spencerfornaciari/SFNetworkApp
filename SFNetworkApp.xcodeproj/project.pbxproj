@@ -26,6 +26,7 @@
 		89BB97E41833589F00533562 /* SFPhotoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E31833589F00533562 /* SFPhotoTableViewController.m */; };
 		89BB97E718335B3D00533562 /* SFWeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E618335B3D00533562 /* SFWeatherModel.m */; };
 		89BB97EA1834054900533562 /* SFPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BB97E91834054900533562 /* SFPhotoModel.m */; };
+		89D77500183963DA00785A5F /* SFWeatherViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D774FF183963DA00785A5F /* SFWeatherViewCell.m */; };
 		A1C00D31D3E84B8885B7A1EC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 623587D839EC4352B2B9162A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,8 @@
 		89BB97E618335B3D00533562 /* SFWeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFWeatherModel.m; path = ../SFWeatherModel.m; sourceTree = "<group>"; };
 		89BB97E81834054900533562 /* SFPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFPhotoModel.h; path = ../SFPhotoModel.h; sourceTree = "<group>"; };
 		89BB97E91834054900533562 /* SFPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFPhotoModel.m; path = ../SFPhotoModel.m; sourceTree = "<group>"; };
+		89D774FE183963DA00785A5F /* SFWeatherViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFWeatherViewCell.h; path = ../SFWeatherViewCell.h; sourceTree = "<group>"; };
+		89D774FF183963DA00785A5F /* SFWeatherViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFWeatherViewCell.m; path = ../SFWeatherViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 		89BB97B318334F2300533562 /* SFNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
+				89D774FE183963DA00785A5F /* SFWeatherViewCell.h */,
+				89D774FF183963DA00785A5F /* SFWeatherViewCell.m */,
 				89B607351835CA1C00FB9DF9 /* SFChooseViewController.h */,
 				89B607361835CA1C00FB9DF9 /* SFChooseViewController.m */,
 				89BB97E81834054900533562 /* SFPhotoModel.h */,
@@ -319,6 +324,7 @@
 				89BB97E41833589F00533562 /* SFPhotoTableViewController.m in Sources */,
 				89B6073A1835DCF400FB9DF9 /* SFWeatherTableViewController.m in Sources */,
 				89B607371835CA1C00FB9DF9 /* SFChooseViewController.m in Sources */,
+				89D77500183963DA00785A5F /* SFWeatherViewCell.m in Sources */,
 				895CC50018348E7200D388D4 /* SFImageViewController.m in Sources */,
 				89BB97E718335B3D00533562 /* SFWeatherModel.m in Sources */,
 				89BB97EA1834054900533562 /* SFPhotoModel.m in Sources */,

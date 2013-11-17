@@ -59,11 +59,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    SFWeatherViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
     // Configure the cell...
-    cell.textLabel.text = [_array[indexPath.row] cityName];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [_array[indexPath.row] weatherTemperature]];
+    cell.cityName.text = [_array[indexPath.row] cityName];
+    cell.cityTemperature.text = [NSString stringWithFormat:@"%@", [_array[indexPath.row] weatherTemperature]];
+    cell.cityDescription.text = [_array[indexPath.row] weatherDescription];
     
     return cell;
 }

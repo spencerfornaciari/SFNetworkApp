@@ -61,13 +61,12 @@
     
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
-//        [imageView setImage: image];
-//        [imageView setContentMode: UIViewContentModeScaleAspectFit];
-//        [self.view addSubview:imageView];
-        self.flickrFullPhoto.image = image;
-        [self.flickrFullPhoto setContentMode:UIViewContentModeScaleAspectFit];
-        //self.view.backgroundColor = [UIColor blueColor];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, self.view.frame.size.height-115)];
+        [imageView setImage: image];
+        [imageView setContentMode: UIViewContentModeScaleAspectFit];
+        [self.view addSubview:imageView];
+//        self.flickrFullPhoto.image = image;
+//        [self.flickrFullPhoto setContentMode:UIViewContentModeScaleAspectFit];
     }];
 }
 
