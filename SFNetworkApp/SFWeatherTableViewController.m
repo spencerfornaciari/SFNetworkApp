@@ -63,7 +63,9 @@
         
     // Configure the cell...
     cell.cityName.text = [_array[indexPath.row] cityName];
-    cell.cityTemperature.text = [NSString stringWithFormat:@"%@", [_array[indexPath.row] weatherTemperature]];
+    cell.cityTemperature.text = [NSString stringWithFormat:@"%.2f %@F", [_array[indexPath.row] weatherTemperature], @"\u00B0"];
+    cell.cityWind.text = [NSString stringWithFormat:@"%@ mph wind", [_array[indexPath.row] windSpeed]];
+    
     cell.cityDescription.text = [_array[indexPath.row] weatherDescription];
     
     return cell;
@@ -135,20 +137,22 @@
                                   
                                   //Parse Dictionary to Weather Model Object
                                   self.seattleWeather.cityName = [dictionary objectForKey:@"name"];
-                                  self.seattleWeather.weatherTemperature = [dictionary valueForKeyPath:@"main.temp"];
+                                  self.seattleWeather.windSpeed = [dictionary valueForKeyPath:@"wind.speed"];
                                   self.seattleWeather.weatherDescription = [[[dictionary objectForKey:@"weather"] lastObject] objectForKey:@"description"];
                                   
-                                  //Test Weather Model Values for validity
-                                  //                                                NSLog(@"%@", self.seattleWeather.cityName);
-                                  //                                                NSLog(@"%@", self.seattleWeather.weatherTemperature);
-                                  //                                                NSLog(@"%@", self.seattleWeather.weatherDescription);
-                                  //NSLog(@"%@ %@", api_key, user_id);
-                                  NSArray *array = [NSArray arrayWithObject:self.seattleWeather];
+                                  NSDecimalNumber *weatherTemp = [[NSDecimalNumber alloc] init];
+                                  weatherTemp = [dictionary valueForKeyPath:@"main.temp"];
+                                  self.seattleWeather.weatherTemperature = (([weatherTemp floatValue] - 273.15) * 1.8) + 32;
                                   
+                                  NSArray *array = [NSArray arrayWithObject:self.seattleWeather];
                                   _array = array;
+                                  
+                                  //Test Weather Model Values for validity
                                   NSLog(@"%@",[_array[0] cityName]);
-                                  NSLog(@"%@",[_array[0] weatherTemperature]);
+                                  NSLog(@"%.2f",[_array[0] weatherTemperature]);
+                                  NSLog(@"%@", weatherTemp);
                                   NSLog(@"%@", [_array[0] weatherDescription]);
+                                  NSLog(@"%@", [_array[0] windSpeed]);
                                   
                                   [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                                       

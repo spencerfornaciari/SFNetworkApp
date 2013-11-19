@@ -11,7 +11,8 @@
 @interface SFWeatherModel : NSObject
 
 @property (nonatomic, strong) NSString *weatherDescription;
-@property (nonatomic) NSDecimalNumber *weatherTemperature;
+@property (nonatomic) float weatherTemperature;
+@property (nonatomic, strong) NSDecimalNumber *windSpeed;
 @property (nonatomic, strong) NSString *cityName;
 
 @end

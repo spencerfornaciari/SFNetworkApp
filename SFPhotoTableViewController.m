@@ -207,8 +207,25 @@
     [self refreshPhotoTable];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-   // NSLog(@"The table is scrolling: %@", scrollView.);
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //scrollView.delegate = self;
+    //NSLog(@"The table is scrolling: %@", [self.tableView indexPathsForVisibleRows];);
+    //NSArray *array = [self.tableView visibleCells];
+    
+    //NSLog(@"%@", array[1]);
+    
+    
+   // [self.tableView.visibleCells]
+    
+    
+//    NSUInteger index = [self.photoArray indexOfObject:SFPhotoModel];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+//    if ([self.tableView.indexPathsForVisibleRows containsObject:indexPath]) {
+//        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+//                              withRowAnimation:UITableViewRowAnimationFade];
+//        NSLog(@"%ld", (long)indexPath.row);
+//    }
     
 }
 

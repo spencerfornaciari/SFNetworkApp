@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *cityName;
 @property (strong, nonatomic) IBOutlet UILabel *cityTemperature;
 @property (strong, nonatomic) IBOutlet UILabel *cityDescription;
+@property (strong, nonatomic) IBOutlet UILabel *cityWind;
 
 @end

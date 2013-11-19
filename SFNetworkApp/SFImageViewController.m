@@ -13,6 +13,9 @@
 @end
 
 @implementation SFImageViewController
+{
+    NSURLSessionDownloadTask *_downloadTask;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,9 +41,9 @@
         
         NSURL *downloadURL = [NSURL URLWithString:self.flickrImage.photoLocationLarge];
         
-        NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL: downloadURL];
+        _downloadTask = [session downloadTaskWithURL: downloadURL];
         
-        [downloadTask resume];
+        [_downloadTask resume];
 
     }
 	// Do any additional setup after loading the view.
@@ -95,7 +98,9 @@ expectedTotalBytes:(int64_t)expectedTotalBytes
     NSLog(@"Did resume...");
 }
 
-- (IBAction)cancelPhoto:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)cancelPhoto:(id)sender
+{
+    [_downloadTask cancel];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end
