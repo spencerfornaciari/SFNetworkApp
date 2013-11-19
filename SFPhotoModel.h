@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *photoTitle;
 @property (nonatomic, strong) NSString *photoSecretID;
 @property (nonatomic, strong) NSData *photoData;
+@property (nonatomic, strong) UIImage *tablePhoto;
 
 @property (nonatomic, strong) NSString *photoLocationSmall;
 @property (nonatomic, strong) NSString *photoLocationLarge;

@@ -12,7 +12,7 @@
 #define user_id @"62543166@N02"
 #define core_flickr @"http://api.flickr.com/services/rest/?&method="
 
-@interface SFPhotoTableViewController () <NSURLSessionDataDelegate>
+@interface SFPhotoTableViewController () <NSURLSessionDataDelegate, UIScrollViewDelegate>
 
 @end
 
@@ -211,9 +211,17 @@
 {
     //scrollView.delegate = self;
     //NSLog(@"The table is scrolling: %@", [self.tableView indexPathsForVisibleRows];);
-    //NSArray *array = [self.tableView visibleCells];
+    NSArray *array = [self.tableView visibleCells];
     
-    //NSLog(@"%@", array[1]);
+    NSLog(@"%@", [array lastObject]);
+    
+//    for (int i = 0; i < self.photoArray.count; i++)
+//    {
+//      if ([[self.photoArray[i] photoTitle] isEqualToString:[array[i] text]])
+//      {
+//          NSLog(@"%@", [self.photoArray[i] photoTitle]);
+//      }
+//    }
     
     
    // [self.tableView.visibleCells]

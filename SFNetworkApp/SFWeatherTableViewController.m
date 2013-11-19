@@ -148,11 +148,11 @@
                                   _array = array;
                                   
                                   //Test Weather Model Values for validity
-                                  NSLog(@"%@",[_array[0] cityName]);
-                                  NSLog(@"%.2f",[_array[0] weatherTemperature]);
-                                  NSLog(@"%@", weatherTemp);
-                                  NSLog(@"%@", [_array[0] weatherDescription]);
-                                  NSLog(@"%@", [_array[0] windSpeed]);
+//                                  NSLog(@"%@",[_array[0] cityName]);
+//                                  NSLog(@"%.2f",[_array[0] weatherTemperature]);
+//                                  NSLog(@"%@", weatherTemp);
+//                                  NSLog(@"%@", [_array[0] weatherDescription]);
+//                                  NSLog(@"%@", [_array[0] windSpeed]);
                                   
                                   [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                                       
