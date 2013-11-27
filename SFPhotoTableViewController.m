@@ -207,13 +207,27 @@
     [self refreshPhotoTable];
 }
 
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    //NSArray *cells = [self.tableView visibleCells];
+    NSArray *paths = [self.tableView indexPathsForVisibleRows];
+    NSIndexPath *indexPath = [paths lastObject];
+    NSLog(@"%d", indexPath.row);
+    NSLog(@"%@", [_photoArray[indexPath.row] photoTitle]);
+    
+    //
+//    if (cells.count > 1)
+//    {
+//        NSLog(@"%@", cells[0]);
+//        NSLog(@"%@", paths[0]);
+//    }
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //scrollView.delegate = self;
     //NSLog(@"The table is scrolling: %@", [self.tableView indexPathsForVisibleRows];);
-    NSArray *array = [self.tableView visibleCells];
-    
-    NSLog(@"%@", [array lastObject]);
+
     
 //    for (int i = 0; i < self.photoArray.count; i++)
 //    {
